@@ -1,0 +1,7 @@
+{
+  "app": { "name": "ኢዱስማርት K-12" },
+  "student": {
+    "welcomeBack": "እንኳን ደህና መጡ፣ {name}",
+    "dueToday": "{count} የቤት ሥራዎች አሉዎት።"
+  }
+}

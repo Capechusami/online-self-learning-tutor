@@ -1,0 +1,7 @@
+{
+  "app": { "name": "EduSmart K-12" },
+  "student": {
+    "welcomeBack": "Baga nagaan dhuftan, {name}",
+    "dueToday": "Hojii manaa {count} qabda."
+  }
+}

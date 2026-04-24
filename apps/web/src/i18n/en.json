@@ -1,0 +1,7 @@
+{
+  "app": { "name": "EduSmart K-12" },
+  "student": {
+    "welcomeBack": "Welcome back, {name}",
+    "dueToday": "You have {count} assignments due."
+  }
+}
