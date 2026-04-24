@@ -2,28 +2,27 @@ import {
   LayoutDashboard,
   BookOpen,
   ClipboardList,
-  Video,
-  Bookmark,
-  BarChart3,
+  Star,
+  CalendarDays,
   HelpCircle,
   LogOut,
   Lightbulb,
 } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
+import { NavLink } from "react-router-dom";
 
 type NavItem = {
   label: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
-  active?: boolean;
+  to: string;
 };
 
 const items: NavItem[] = [
-  { label: "Dashboard", icon: LayoutDashboard, active: true },
-  { label: "My Courses", icon: BookOpen },
-  { label: "Assignments", icon: ClipboardList },
-  { label: "Live Classes", icon: Video },
-  { label: "Resources", icon: Bookmark },
-  { label: "Performance", icon: BarChart3 },
+  { label: "Dashboard", icon: LayoutDashboard, to: "/student/dashboard" },
+  { label: "My Courses", icon: BookOpen, to: "/student/classes" },
+  { label: "Assignments", icon: ClipboardList, to: "/student/assignments" },
+  { label: "Grades", icon: Star, to: "/student/grades" },
+  { label: "Schedule", icon: CalendarDays, to: "/student/schedule" },
 ];
 
 /**
@@ -45,20 +44,19 @@ export function Sidebar() {
 
       {/* Nav */}
       <nav className="flex flex-col gap-1">
-        {items.map(({ label, icon: Icon, active }) => (
-          <a
+        {items.map(({ label, icon: Icon, to }) => (
+          <NavLink
             key={label}
-            href="#"
-            className={
-              active
+            to={to}
+            className={({ isActive }) =>
+              isActive
                 ? "flex items-center gap-3 rounded-lg bg-brand px-3 py-2.5 text-sm font-medium text-white shadow-card"
                 : "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-ink-700 transition hover:bg-ink-100"
             }
-            aria-current={active ? "page" : undefined}
           >
             <Icon className="size-[18px]" aria-hidden />
             {label}
-          </a>
+          </NavLink>
         ))}
       </nav>
 

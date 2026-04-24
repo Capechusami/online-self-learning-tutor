@@ -2,6 +2,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "@/features/auth/pages/LoginPage";
 import RegisterPage from "@/features/auth/pages/RegisterPage";
 import StudentDashboardPage from "@/features/student/pages/StudentDashboardPage";
+import MyClassesPage from "@/features/student/pages/MyClassesPage";
+import AssignmentsPage from "@/features/student/pages/AssignmentsPage";
+import SchedulePage from "@/features/student/pages/SchedulePage";
 
 // When Clerk isn't configured, auth routes redirect to the dashboard so the
 // preview works without any backend setup.
@@ -32,6 +35,9 @@ export function AppRouter() {
         }
       />
       <Route path="/student/dashboard" element={<StudentDashboardPage />} />
+      <Route path="/student/classes" element={<MyClassesPage />} />
+      <Route path="/student/assignments" element={<AssignmentsPage />} />
+      <Route path="/student/schedule" element={<SchedulePage />} />
       <Route
         path="/forgot-password"
         element={
