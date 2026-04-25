@@ -1,13 +1,17 @@
 import { AlertTriangle, FileText } from "lucide-react";
+import { useT } from "@/i18n/I18nProvider";
 
 /**
  * Upcoming Tasks — right-column panel with task cards + calendar link.
  */
 export function UpcomingTasksPanel() {
+  const { t } = useT();
   return (
     <section className="rounded-2xl border border-ink-200 bg-white p-5 shadow-card">
       <header className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-ink-900">Upcoming Tasks</h3>
+        <h3 className="text-sm font-semibold text-ink-900">
+          {t("student.upcomingTasks")}
+        </h3>
         <span className="flex size-6 items-center justify-center rounded-full bg-red-100 text-[11px] font-bold text-red-600">
           2
         </span>

@@ -1,5 +1,6 @@
 import { FileText, FlaskConical, BookOpen } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
+import { useT } from "@/i18n/I18nProvider";
 
 type Grade = {
   assessment: string;
@@ -41,9 +42,12 @@ const grades: Grade[] = [
  * Recent Grades table — recent assessments with subject, date, and score.
  */
 export function RecentGradesCard() {
+  const { t } = useT();
   return (
     <section className="rounded-2xl border border-ink-200 bg-white p-5 shadow-card">
-      <h3 className="text-sm font-semibold text-ink-900">Recent Grades</h3>
+      <h3 className="text-sm font-semibold text-ink-900">
+        {t("student.recentGrades")}
+      </h3>
 
       <table className="mt-4 w-full text-sm">
         <thead>

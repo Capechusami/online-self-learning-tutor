@@ -33,6 +33,20 @@ export default {
       boxShadow: {
         card: "0 1px 2px rgba(15,23,42,0.04), 0 1px 3px rgba(15,23,42,0.06)",
       },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(200%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 30s linear infinite",
+        shimmer: "shimmer 2.4s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

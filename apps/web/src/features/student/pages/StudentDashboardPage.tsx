@@ -1,4 +1,5 @@
 import { CalendarDays } from "lucide-react";
+import { useT } from "@/i18n/I18nProvider";
 import { Sidebar } from "../components/Sidebar";
 import { Topbar } from "../components/Topbar";
 import { OverallProgressCard } from "../components/OverallProgressCard";
@@ -14,6 +15,7 @@ import { EncouragementCard } from "../components/EncouragementCard";
  * Layout: fixed left sidebar, top app bar, 2-column main grid (content + tasks).
  */
 export default function StudentDashboardPage() {
+  const { t } = useT();
   return (
     <div className="flex min-h-screen bg-surface-page font-sans text-ink-900">
       <Sidebar />
@@ -26,12 +28,12 @@ export default function StudentDashboardPage() {
           <div className="mb-6 flex items-start justify-between gap-4">
             <div>
               <h1 className="text-xl font-semibold text-ink-900">
-                Welcome back,{" "}
+                {t("student.welcomeBack", { name: "" })}
                 <span className="text-brand">Elias</span>{" "}
                 <span aria-hidden>👋</span>
               </h1>
               <p className="mt-1 text-sm text-ink-500">
-                Ready to conquer Grade 10 today? You have 2 assignments due.
+                {t("student.dueToday", { count: 2 })}
               </p>
             </div>
             <button
@@ -39,7 +41,7 @@ export default function StudentDashboardPage() {
               className="inline-flex items-center gap-2 rounded-lg border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-700 shadow-card transition hover:bg-ink-50"
             >
               <CalendarDays className="size-4" aria-hidden />
-              View Schedule
+              {t("common.viewSchedule")}
             </button>
           </div>
 

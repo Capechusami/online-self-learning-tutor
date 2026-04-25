@@ -1,5 +1,6 @@
 import { BookOpen, FlaskConical, Languages } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
+import { useT } from "@/i18n/I18nProvider";
 
 type Course = {
   title: string;
@@ -43,12 +44,15 @@ const courses: Course[] = [
  * Current Courses — grid of enrolled subjects with per-course progress bars.
  */
 export function CurrentCoursesCard() {
+  const { t } = useT();
   return (
     <section className="rounded-2xl border border-ink-200 bg-white p-5 shadow-card">
       <header className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-ink-900">Current Courses</h3>
+        <h3 className="text-sm font-semibold text-ink-900">
+          {t("student.currentCourses")}
+        </h3>
         <a href="#" className="text-xs font-semibold text-brand hover:underline">
-          View All
+          {t("common.viewAll")}
         </a>
       </header>
 

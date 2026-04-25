@@ -1,15 +1,19 @@
 import { TrendingUp } from "lucide-react";
+import { useT } from "@/i18n/I18nProvider";
 
 /**
  * Overall Progress card — donut chart + short summary + weekly delta pill.
  */
 export function OverallProgressCard() {
+  const { t } = useT();
   return (
     <section className="rounded-2xl border border-ink-200 bg-white p-5 shadow-card">
       <header className="flex items-start justify-between">
         <div>
-          <h3 className="text-sm font-semibold text-ink-900">Overall Progress</h3>
-          <p className="text-xs text-ink-500">Semester 1 · 2024</p>
+          <h3 className="text-sm font-semibold text-ink-900">
+            {t("student.overallProgress")}
+          </h3>
+          <p className="text-xs text-ink-500">{t("student.semester")}</p>
         </div>
         <span className="flex size-7 items-center justify-center rounded-lg bg-brand/10 text-brand">
           <TrendingUp className="size-4" aria-hidden />
@@ -19,13 +23,13 @@ export function OverallProgressCard() {
       <div className="mt-4 flex items-center gap-4">
         <Donut value={75} />
         <p className="text-sm leading-snug text-ink-700">
-          Great job! You are ahead of schedule in 3 subjects.
+          {t("student.progressMessage")}
         </p>
       </div>
 
       <div className="mt-4">
         <span className="inline-flex items-center rounded-lg bg-emerald-100 px-3 py-1.5 text-xs font-semibold text-emerald-700">
-          +5% this week
+          {t("student.weeklyDelta")}
         </span>
       </div>
     </section>

@@ -2,16 +2,17 @@ import type { ButtonHTMLAttributes } from "react";
 import {
   GraduationCap,
   Search,
-  ChevronDown,
-  Globe,
   Bell,
   Settings,
 } from "lucide-react";
+import { useT } from "@/i18n/I18nProvider";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 /**
  * Top app bar: brand, search, language, notifications, settings, avatar.
  */
 export function Topbar() {
+  const { t } = useT();
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b border-ink-200 bg-white px-6">
       {/* Brand */}
@@ -32,27 +33,16 @@ export function Topbar() {
         />
         <input
           type="search"
-          placeholder="Search courses, assignments..."
+          placeholder={t("common.search")}
           className="h-10 w-full rounded-full border border-ink-200 bg-ink-50 pl-9 pr-4 text-sm text-ink-900 placeholder:text-ink-500 outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20"
         />
       </label>
 
       <div className="ml-auto flex items-center gap-3">
-        {/* Language switcher */}
-        <button
-          type="button"
-          className="flex h-9 items-center gap-2 rounded-full border border-ink-200 bg-white px-3 text-sm font-medium text-ink-700 transition hover:bg-ink-50"
-        >
-          Amharic
-          <ChevronDown className="size-4 text-ink-500" aria-hidden />
-        </button>
-
-        <IconButton aria-label="Translate">
-          <Globe className="size-5" />
-        </IconButton>
+        <LanguageSwitcher />
 
         <div className="relative">
-          <IconButton aria-label="Notifications">
+          <IconButton aria-label={t("common.notifications")}>
             <Bell className="size-5" />
           </IconButton>
           <span
@@ -61,7 +51,7 @@ export function Topbar() {
           />
         </div>
 
-        <IconButton aria-label="Settings">
+        <IconButton aria-label={t("common.settings")}>
           <Settings className="size-5" />
         </IconButton>
 

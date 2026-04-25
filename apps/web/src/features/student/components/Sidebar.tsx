@@ -4,31 +4,38 @@ import {
   ClipboardList,
   Star,
   CalendarDays,
+  Bookmark,
+  ClipboardCheck,
   HelpCircle,
   LogOut,
   Lightbulb,
 } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { NavLink } from "react-router-dom";
+import { useT } from "@/i18n/I18nProvider";
 
 type NavItem = {
-  label: string;
+  key: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   to: string;
 };
 
 const items: NavItem[] = [
-  { label: "Dashboard", icon: LayoutDashboard, to: "/student/dashboard" },
-  { label: "My Courses", icon: BookOpen, to: "/student/classes" },
-  { label: "Assignments", icon: ClipboardList, to: "/student/assignments" },
-  { label: "Grades", icon: Star, to: "/student/grades" },
-  { label: "Schedule", icon: CalendarDays, to: "/student/schedule" },
+  { key: "dashboard", icon: LayoutDashboard, to: "/student/dashboard" },
+  { key: "myCourses", icon: BookOpen, to: "/student/classes" },
+  { key: "assignments", icon: ClipboardList, to: "/student/assignments" },
+  { key: "grades", icon: Star, to: "/student/grades" },
+  { key: "assessments", icon: ClipboardCheck, to: "/student/assessments" },
+  { key: "schedule", icon: CalendarDays, to: "/student/schedule" },
+  { key: "resources", icon: Bookmark, to: "/student/resources" },
 ];
 
 /**
  * Left sidebar: portal header, primary navigation, upgrade CTA, and footer links.
  */
 export function Sidebar() {
+  const { t } = useT();
+
   return (
     <aside className="sticky top-0 hidden h-screen w-[240px] shrink-0 flex-col border-r border-ink-200 bg-white px-4 py-5 md:flex">
       {/* Portal header */}
@@ -37,16 +44,18 @@ export function Sidebar() {
           <Lightbulb className="size-5 text-amber-500" aria-hidden />
         </span>
         <div className="leading-tight">
-          <div className="text-sm font-semibold text-ink-900">Student Portal</div>
-          <div className="text-xs text-ink-500">Grade 10 · Section A</div>
+          <div className="text-sm font-semibold text-ink-900">
+            {t("sidebar.portal")}
+          </div>
+          <div className="text-xs text-ink-500">{t("sidebar.grade")}</div>
         </div>
       </div>
 
       {/* Nav */}
       <nav className="flex flex-col gap-1">
-        {items.map(({ label, icon: Icon, to }) => (
+        {items.map(({ key, icon: Icon, to }) => (
           <NavLink
-            key={label}
+            key={key}
             to={to}
             className={({ isActive }) =>
               isActive
@@ -55,32 +64,26 @@ export function Sidebar() {
             }
           >
             <Icon className="size-[18px]" aria-hidden />
-            {label}
+            {t(`sidebar.${key}`)}
           </NavLink>
         ))}
       </nav>
 
-      {/* Spacer + upgrade */}
+      {/* Footer links */}
       <div className="mt-auto flex flex-col gap-2">
-        <button
-          type="button"
-          className="mb-2 w-full rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-card transition hover:bg-brand-600"
-        >
-          Upgrade Plan
-        </button>
         <a
           href="#"
           className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-ink-100"
         >
           <HelpCircle className="size-[18px]" aria-hidden />
-          Help Center
+          {t("sidebar.helpCenter")}
         </a>
         <a
           href="/login"
           className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-ink-700 transition hover:bg-ink-100"
         >
           <LogOut className="size-[18px]" aria-hidden />
-          Logout
+          {t("sidebar.logout")}
         </a>
       </div>
     </aside>

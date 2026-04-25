@@ -1,10 +1,12 @@
 import { Timer, ChevronRight, Clock } from "lucide-react";
+import { useT } from "@/i18n/I18nProvider";
 
 /**
  * "Up Next" card — highlights the next upcoming live lesson.
  * Uses the brand gradient from the login page for visual continuity.
  */
 export function UpNextCard() {
+  const { t } = useT();
   return (
     <section
       className="relative overflow-hidden rounded-2xl p-5 text-white shadow-card"
@@ -15,7 +17,7 @@ export function UpNextCard() {
     >
       <header className="flex items-start justify-between">
         <span className="rounded-md bg-white/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur">
-          Up Next
+          {t("student.upNext")}
         </span>
         <span className="flex size-7 items-center justify-center rounded-lg bg-white/15 backdrop-blur">
           <Timer className="size-4" aria-hidden />

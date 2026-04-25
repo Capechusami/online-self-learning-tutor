@@ -5,6 +5,9 @@ import StudentDashboardPage from "@/features/student/pages/StudentDashboardPage"
 import MyClassesPage from "@/features/student/pages/MyClassesPage";
 import AssignmentsPage from "@/features/student/pages/AssignmentsPage";
 import SchedulePage from "@/features/student/pages/SchedulePage";
+import GradesPage from "@/features/student/pages/GradesPage";
+import ResourcesPage from "@/features/student/pages/ResourcesPage";
+import LandingPage from "@/features/landing/pages/LandingPage";
 
 // When Clerk isn't configured, auth routes redirect to the dashboard so the
 // preview works without any backend setup.
@@ -13,7 +16,7 @@ const CLERK_ENABLED = Boolean(import.meta.env.VITE_CLERK_PUBLISHABLE_KEY);
 export function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/student/dashboard" replace />} />
+      <Route path="/" element={<LandingPage />} />
       <Route
         path="/login"
         element={
@@ -38,6 +41,8 @@ export function AppRouter() {
       <Route path="/student/classes" element={<MyClassesPage />} />
       <Route path="/student/assignments" element={<AssignmentsPage />} />
       <Route path="/student/schedule" element={<SchedulePage />} />
+      <Route path="/student/grades" element={<GradesPage />} />
+      <Route path="/student/resources" element={<ResourcesPage />} />
       <Route
         path="/forgot-password"
         element={
@@ -46,7 +51,7 @@ export function AppRouter() {
           </div>
         }
       />
-      <Route path="*" element={<Navigate to="/student/dashboard" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

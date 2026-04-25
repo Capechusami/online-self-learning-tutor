@@ -1,4 +1,5 @@
 import { CheckCircle2, PlayCircle, Lock } from "lucide-react";
+import { useT } from "@/i18n/I18nProvider";
 
 type Status = "completed" | "active" | "locked";
 
@@ -34,10 +35,11 @@ const lessons: Lesson[] = [
  * Learning Path card — vertical list of lessons with completed / active / locked states.
  */
 export function LearningPathCard() {
+  const { t } = useT();
   return (
     <section className="rounded-2xl border border-ink-200 bg-white p-5 shadow-card">
       <h3 className="text-sm font-semibold text-ink-900">
-        Learning Path: Advanced Mathematics
+        {t("student.learningPath")}: Advanced Mathematics
       </h3>
 
       <ul className="mt-4 flex flex-col gap-2">
