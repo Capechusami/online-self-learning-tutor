@@ -14,6 +14,7 @@ import { ClassCard, type ClassItem } from "../components/ClassCard";
 const classes: ClassItem[] = [
   {
     period: 1,
+    slug: "advanced-mathematics",
     title: "Advanced Mathematics",
     teacher: "Mr. Anderson",
     progress: 82,
@@ -31,6 +32,7 @@ const classes: ClassItem[] = [
   },
   {
     period: 2,
+    slug: "biology-101",
     title: "Biology & Earth Science",
     teacher: "Dr. Ramirez",
     progress: 65,
@@ -48,6 +50,7 @@ const classes: ClassItem[] = [
   },
   {
     period: 3,
+    slug: "amharic-literature",
     title: "Amharic Literature",
     teacher: "Ms. Tadesse",
     progress: 40,
@@ -65,6 +68,7 @@ const classes: ClassItem[] = [
   },
   {
     period: 4,
+    slug: "english-language-arts",
     title: "English Language Arts",
     teacher: "Mr. Wright",
     progress: 92,
@@ -82,6 +86,7 @@ const classes: ClassItem[] = [
   },
   {
     period: 5,
+    slug: "world-history",
     title: "World History & Geography",
     teacher: "Ms. Patel",
     progress: 55,
@@ -99,6 +104,7 @@ const classes: ClassItem[] = [
   },
   {
     period: 6,
+    slug: "information-technology",
     title: "Information Technology",
     teacher: "Mr. Chen",
     progress: 78,

@@ -5,6 +5,7 @@ import {
   Bell,
   Settings,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useT } from "@/i18n/I18nProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
@@ -51,9 +52,13 @@ export function Topbar() {
           />
         </div>
 
-        <IconButton aria-label={t("common.settings")}>
+        <Link
+          to="/student/settings"
+          aria-label={t("common.settings")}
+          className="flex size-9 items-center justify-center rounded-full text-ink-700 transition hover:bg-ink-100"
+        >
           <Settings className="size-5" />
-        </IconButton>
+        </Link>
 
         {/* Avatar */}
         <img

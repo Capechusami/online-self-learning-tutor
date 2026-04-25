@@ -7,6 +7,12 @@ import AssignmentsPage from "@/features/student/pages/AssignmentsPage";
 import SchedulePage from "@/features/student/pages/SchedulePage";
 import GradesPage from "@/features/student/pages/GradesPage";
 import ResourcesPage from "@/features/student/pages/ResourcesPage";
+import AssessmentsPage from "@/features/student/pages/AssessmentsPage";
+import CourseDetailPage from "@/features/student/pages/CourseDetailPage";
+import SettingsLayout from "@/features/student/settings/SettingsLayout";
+import SettingsSecurityPage from "@/features/student/pages/SettingsSecurityPage";
+import SettingsPreferencesPage from "@/features/student/pages/SettingsPreferencesPage";
+import SettingsAcademicPage from "@/features/student/pages/SettingsAcademicPage";
 import LandingPage from "@/features/landing/pages/LandingPage";
 
 // When Clerk isn't configured, auth routes redirect to the dashboard so the
@@ -39,10 +45,18 @@ export function AppRouter() {
       />
       <Route path="/student/dashboard" element={<StudentDashboardPage />} />
       <Route path="/student/classes" element={<MyClassesPage />} />
+      <Route path="/student/classes/:slug" element={<CourseDetailPage />} />
       <Route path="/student/assignments" element={<AssignmentsPage />} />
       <Route path="/student/schedule" element={<SchedulePage />} />
       <Route path="/student/grades" element={<GradesPage />} />
       <Route path="/student/resources" element={<ResourcesPage />} />
+      <Route path="/student/assessments" element={<AssessmentsPage />} />
+      <Route path="/student/settings" element={<SettingsLayout />}>
+        <Route index element={<Navigate to="security" replace />} />
+        <Route path="security" element={<SettingsSecurityPage />} />
+        <Route path="preferences" element={<SettingsPreferencesPage />} />
+        <Route path="academic" element={<SettingsAcademicPage />} />
+      </Route>
       <Route
         path="/forgot-password"
         element={

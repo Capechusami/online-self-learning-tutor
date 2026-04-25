@@ -1,5 +1,6 @@
 import { User, BookOpen, Clock } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
+import { Link } from "react-router-dom";
 
 export type ClassTheme = {
   /** soft header background tint */
@@ -25,6 +26,8 @@ export type ClassItem = {
   hours: number;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
   theme: ClassTheme;
+  /** URL-safe identifier used for the course detail route. */
+  slug: string;
 };
 
 /**
@@ -98,9 +101,9 @@ export function ClassCard({ item }: { item: ClassItem }) {
           </span>
         </div>
 
-        <button
-          type="button"
-          className="mt-1 w-full rounded-lg py-2.5 text-sm font-semibold text-white transition"
+        <Link
+          to={`/student/classes/${item.slug}`}
+          className="mt-1 block w-full rounded-lg py-2.5 text-center text-sm font-semibold text-white transition"
           style={{ backgroundColor: theme.accent }}
           onMouseEnter={(e) =>
             (e.currentTarget.style.backgroundColor = theme.accentHover)
@@ -110,7 +113,7 @@ export function ClassCard({ item }: { item: ClassItem }) {
           }
         >
           Continue Lesson
-        </button>
+        </Link>
       </div>
     </article>
   );
